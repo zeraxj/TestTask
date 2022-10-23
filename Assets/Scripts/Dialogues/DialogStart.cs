@@ -8,24 +8,35 @@ using UnityEngine.InputSystem;
 public class DialogStart : MonoBehaviour
 {
     public GameObject player;
-    public GameObject serah;
-    public GameObject serahCanvas;
-    public GameObject dialogCanvas;
+    public GameObject npc;
+    public GameObject npcCanvas; // канвас кнопрки взаимодействи с нпс
+    public GameObject dialogCanvas; // канвас диалога
     public Transform playerPositionAtDialog;
     public GameObject dialogCamera;
-    // Start is called before the first frame update
+    private bool dialogStart;
+
+    void Update()
+    {
+        if (dialogStart)
+        {
+            player.transform.position = playerPositionAtDialog.transform.position;
+            player.transform.LookAt(npc.transform.position);
+        }
+        
+    }
+
     public void DialogOnStart()
     {
         
+        dialogStart = true;
+        player.GetComponent<PlayerInput>().DeactivateInput();
         
-        player.GetComponent<PlayerInput>().enabled = false;
-        player.transform.position = playerPositionAtDialog.transform.position;
-        player.transform.LookAt(serah.transform.position);
+        
 
-        Animator serahAnim = serah.GetComponent<Animator>();
-        serah.transform.LookAt(player.transform.position);
-        serahAnim.SetBool("Dialog", true);
-        serahCanvas.SetActive(false);
+        Animator npcAnim = npc.GetComponent<Animator>();
+        
+        npcAnim.SetBool("Dialog", true);
+        npcCanvas.SetActive(false);
 
         dialogCamera.GetComponent<CinemachineVirtualCamera>().enabled = true;
         Cursor.lockState = CursorLockMode.None;
@@ -37,15 +48,15 @@ public class DialogStart : MonoBehaviour
     public void DialogOnFinish()
     {
 
-
-        player.GetComponent<PlayerInput>().enabled = true;
+        dialogStart =false;
+        player.GetComponent<PlayerInput>().ActivateInput();
         
         
 
-        Animator serahAnim = serah.GetComponent<Animator>();
+        Animator npcAnim = npc.GetComponent<Animator>();
         
-        serahAnim.SetBool("Dialog", false);
-        serahCanvas.SetActive(true);
+        npcAnim.SetBool("Dialog", false);
+        npcCanvas.SetActive(true);
 
         dialogCamera.GetComponent<CinemachineVirtualCamera>().enabled = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -55,9 +66,6 @@ public class DialogStart : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
+    
 }

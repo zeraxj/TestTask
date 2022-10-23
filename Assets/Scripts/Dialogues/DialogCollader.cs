@@ -23,7 +23,7 @@ public class DialogCollader : MonoBehaviour
     {
         if (other.GetComponent<StarterAssetsInputs>().use)
         {
-            Debug.Log("E");
+            
             dialogstart.GetComponent<DialogStart>().DialogOnStart();
             other.GetComponent<StarterAssetsInputs>().use = false;
 
