@@ -11,21 +11,29 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
-       questKill = quest.GetComponent<Quest>();
+        anim = GetComponent<Animator>();
+        questKill = quest.GetComponent<Quest>();
     }
     public void Kill()
     {
         hit++;
         if (hit == 3)
         {
+            anim.SetBool("Death", true);
             questKill.EnemyKill();
-            Destroy(gameObject);
+            GetComponent<CapsuleCollider>().enabled = false;
+            Invoke("DestroyModel", 3);
         }
         else
         {
-            anim = GetComponent<Animator>();
+            
             anim.SetTrigger("ReceivePunch");
         }
         
+    }
+
+    private void DestroyModel()
+    {
+        Destroy(gameObject);
     }
 }
