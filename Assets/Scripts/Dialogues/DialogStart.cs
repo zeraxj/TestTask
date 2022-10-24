@@ -14,6 +14,8 @@ public class DialogStart : MonoBehaviour
     public Transform playerPositionAtDialog;
     public GameObject dialogCamera;
     private bool dialogStart;
+    public bool questFinish;
+    public GameObject questCanvas;
 
     void Update()
     {
@@ -42,7 +44,12 @@ public class DialogStart : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         dialogCanvas.SetActive(true);
-        
+        Quest quest = questCanvas.GetComponent<Quest>();
+        if (quest.enemy == 3)
+        {
+            questFinish = true;
+        }
+
 
     }
     public void DialogOnFinish()
@@ -62,6 +69,15 @@ public class DialogStart : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         dialogCanvas.SetActive(false);
+        Quest quest = questCanvas.GetComponent<Quest>();
+        if (quest.enemy < 3)
+        {
+            questCanvas.SetActive(true);
+        }
+        else if (quest.enemy == 3)
+        {
+            questCanvas.SetActive(false);
+        }
 
 
     }

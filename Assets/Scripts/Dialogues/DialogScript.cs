@@ -15,34 +15,56 @@ public class DialogScript : MonoBehaviour
     void Start()
     {
         
-        dialogText.text = replic[numberReplic];
+        
+        
+        
+        
+            dialogText.text = replic[numberReplic];
         
 
+
+    }
+    private void Update()
+    {
+        if (dialogFinishScript.questFinish)
+        {
+            dialogText.text = "Спасибо за все! Еще увидемся)";
+
+        }
     }
 
-    
+
 
     public void NumberReplic()
     {
-        if (numberReplic < 5)
+        if (dialogFinishScript.questFinish)
         {
-            numberReplic++;
-            if (numberReplic == 3)
-            {
-                serahAnim.SetBool("Praying", true);
-            }
-            else
-            {
-                serahAnim.SetBool("Praying", false);
-            }
-            ReplicSwitch();
+            
+            dialogFinishScript.DialogOnFinish();
         }
         else
         {
-            numberReplic = 6;
-            dialogText.text = replic[numberReplic];
-            dialogFinishScript.DialogOnFinish();
+            if (numberReplic < 5)
+            {
+                numberReplic++;
+                if (numberReplic == 3)
+                {
+                    serahAnim.SetBool("Praying", true);
+                }
+                else
+                {
+                    serahAnim.SetBool("Praying", false);
+                }
+                ReplicSwitch();
+            }
+            else
+            {
+                numberReplic = 6;
+                dialogText.text = replic[numberReplic];
+                dialogFinishScript.DialogOnFinish();
+            }
         }
+        
         
     }
 

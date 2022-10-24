@@ -7,7 +7,7 @@ public class ChaseBehaviour : StateMachineBehaviour
 {
     NavMeshAgent agent;
     Transform player;
-    float attackRange = 1.7f;
+    float attackRange = 2.2f;
     float chaseRange = 10;
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -27,6 +27,7 @@ public class ChaseBehaviour : StateMachineBehaviour
         {
             animator.SetBool("isAttacking", true);
         }
+        
 
         if (distance > chaseRange)
         {

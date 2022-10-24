@@ -7,6 +7,7 @@ public class WalkingBackBehaviour : StateMachineBehaviour
 {
     NavMeshAgent agent;
     Transform enemyStartPoint;
+    
 
     Transform player;
     float chaseRange = 10;
@@ -32,7 +33,7 @@ public class WalkingBackBehaviour : StateMachineBehaviour
         {
             animator.SetBool("isChasing", true);
         }
-        if (distance2 < 0.5)
+        if (distance2 < 1)
         {
             animator.SetBool("isWalking", false);
             animator.transform.LookAt(player);
