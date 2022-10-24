@@ -42,7 +42,8 @@ QualitySettings:
     resolutionScalingFixedDPIFactor: 1
     customRenderPipeline: {fileID: 11400000, guid: 36dd385e759c96147b6463dcd1149c11,
       type: 2}
-    excludedTargetPlatforms: []
+    excludedTargetPlatforms:
+    - Standalone
   - serializedVersion: 2
     name: Balanced
     pixelLightCount: 0
@@ -125,7 +126,7 @@ QualitySettings:
     PS4: 0
     Server: 0
     Stadia: 0
-    Standalone: 0
+    Standalone: 1
     WebGL: 0
     Windows Store Apps: 0
     XboxOne: 0

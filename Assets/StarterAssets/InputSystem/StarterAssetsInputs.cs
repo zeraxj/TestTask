@@ -78,7 +78,7 @@ namespace StarterAssets
 		public void OnEsc()
 		{
 
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(0);
         }
 #endif
         public void UseInput(bool newUseState)

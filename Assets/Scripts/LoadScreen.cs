@@ -20,7 +20,7 @@ public class LoadScreen : MonoBehaviour
 
     IEnumerator LoadAsync()
     {
-        AsyncOperation loadAsync = SceneManager.LoadSceneAsync(0);
+        AsyncOperation loadAsync = SceneManager.LoadSceneAsync(1);
         loadAsync.allowSceneActivation = false;
 
         while (!loadAsync.isDone)
