@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class DialogStart : MonoBehaviour
 {
@@ -77,9 +78,16 @@ public class DialogStart : MonoBehaviour
         else if (quest.enemy == 3)
         {
             questCanvas.SetActive(false);
+            npcAnim.SetTrigger("dancing");
+            Invoke("LoadScene", 10);
         }
 
 
+    }
+
+    public void LoadScene()
+    {
+        SceneManager.LoadScene(1);
     }
 
     

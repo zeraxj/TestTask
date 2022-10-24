@@ -28,7 +28,8 @@ public class DialogScript : MonoBehaviour
     {
         if (dialogFinishScript.questFinish)
         {
-            dialogText.text = "Спасибо за все! Еще увидемся)";
+            dialogText.text = "Джессика: Спасибо за все! Еще увидемся)";
+           // serahAnim.SetTrigger("dancing");
 
         }
     }

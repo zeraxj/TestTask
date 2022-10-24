@@ -1,6 +1,8 @@
 using UnityEngine;
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
+
 #endif
 
 namespace StarterAssets
@@ -72,6 +74,12 @@ namespace StarterAssets
 			UseInput(value.isPressed);
 			//Invoke("OffUse", Time.deltaTime);
 		}
+
+		public void OnEsc()
+		{
+
+            SceneManager.LoadScene(1);
+        }
 #endif
         public void UseInput(bool newUseState)
         {
